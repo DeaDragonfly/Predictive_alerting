@@ -8,7 +8,7 @@ The solution follows a **sliding window formulation**, uses a **tree-based machi
 
 ## Problem Formulation
 
-We model a system that processes incoming requests with limited capacity (e.g., API server, task queue, or message broker).
+Model a system that processes incoming requests with limited capacity (e.g., API server, task queue, or message broker).
 
 At each time step, we observe:
 - `queue_length`
@@ -28,7 +28,7 @@ This is a **binary classification problem**:
 
 ## Dataset
 
-We generate a synthetic time series simulating realistic queue dynamics:
+Generate a synthetic time series simulating realistic queue dynamics:
 
 - Incoming load fluctuates over time and includes **overload events**
 - Processing slows down as the queue grows
@@ -46,7 +46,7 @@ This creates labeled incident intervals.
 
 ## Sliding Window Representation
 
-Instead of feeding raw time series, we use a **window-based feature extraction**:
+Instead of feeding raw time series, use a **window-based feature extraction**:
 
 - Window size: `W = 30`
 - Prediction horizon: `H = 10`
@@ -63,7 +63,7 @@ This results in a tabular dataset suitable for classical ML models.
 
 ## Model
 
-We use:
+I used:
 
 - `HistGradientBoostingClassifier` (scikit-learn)
 - Class balancing via sample weights
@@ -78,7 +78,7 @@ This model was chosen because:
 
 ## Evaluation Setup
 
-We split data chronologically:
+Split data chronologically:
 - **Train**: first 70%
 - **Validation**: next 15%
 - **Test**: final 15%
@@ -88,13 +88,13 @@ This avoids data leakage and reflects real-world deployment.
 ### Threshold Selection
 
 The model outputs probabilities.  
-We select the classification threshold using **F1-score on the validation set**.
+Select the classification threshold using **F1-score on the validation set**.
 
 ---
 
 ## Metrics
 
-We report:
+Report:
 
 - Precision
 - Recall
