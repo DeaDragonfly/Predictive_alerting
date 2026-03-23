@@ -297,7 +297,6 @@ def main():
     test_prob = model.predict_proba(X_test)[:, 1]
     ml_results = evaluate(y_test, test_prob, best_thr)
 
-    print(f"Validation F1: {best_val_f1:.4f}")
     #the metrics of a simple rule are calculated per test. this provides a comparison: rule-based and ML
     rule_pred = rule_based_predict(X_test)
     rule_results = evaluate_binary_predictions(y_test, rule_pred)
